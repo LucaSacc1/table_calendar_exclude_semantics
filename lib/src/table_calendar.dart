@@ -557,6 +557,8 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
             },
             dayBuilder: (context, day, focusedMonth) {
               return GestureDetector(
+                excludeFromSemantics: (day.month != focusedMonth.month) &&
+                    _shouldBlockOutsideDays,
                 behavior: widget.dayHitTestBehavior,
                 onTap: () => _onDayTapped(day),
                 onLongPress: () => _onDayLongPressed(day),
